@@ -15,11 +15,12 @@ public class BasePageUI {
 	public static final String TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX = "//table[@id='%s']/tbody/tr[%s]/td[%s]";
 	public static final String SUCCESS_MESSAGE_VALUE = "//div[@class='inner']/div[contains(text(),'%s')]";
 	
+	public static final String ELEMENT_BY_TEXT_IN_TABLE_BY_ID = "//table[@id='%s']//a[text()='%s']";
 	// Qualifications
 	public static final String TABLE_HEADER_BY_ID_OF_FORM = "//form[@id='%s']//table";
 	
 	
-	public static final String BLOOD_TYPE_DROPDOWN = "//select[@class='editable']";
+	public static final String BLOOD_TYPE_DROPDOWN = "//select[@name='%s']";
 	
 	
 	

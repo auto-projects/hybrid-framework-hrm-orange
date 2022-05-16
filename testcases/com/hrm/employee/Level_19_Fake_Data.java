@@ -29,6 +29,7 @@ public class Level_19_Fake_Data extends BaseTest {
 	// Add Employee & Edit 'Personal Details'
 	String employeeFullName, editEmpFirstName, editEmpLastName, editEmpGender, editEmpMaritalStatus, editEmpNationality;
 	String employeeEditedFullName;
+	String bloodType;
 
 	// Edit 'Contact Details'
 	String addressStreet1, addressStreet2, city, stateProvince, zipPostalCode, country, homeTelephone, mobile,
@@ -74,6 +75,7 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		loginPage = PageGenerator.getLoginPage(driver);
 		fakeData = DataUtil.getData();
+		showBrowserConsoleLogs(driver);
 
 		statusValue = "Enabled";
 		adminUserName = "Admin";
@@ -93,6 +95,7 @@ public class Level_19_Fake_Data extends BaseTest {
 		editEmpMaritalStatus = "Single";
 		editEmpNationality = "Vietnamese";
 		employeeEditedFullName = editEmpFirstName + " " + editEmpLastName;
+		bloodType = "O+";
 
 		// Emer. Contacts
 		emerName = fakeData.getName();
@@ -116,7 +119,7 @@ public class Level_19_Fake_Data extends BaseTest {
 		city = fakeData.getCity();
 		stateProvince = fakeData.getState();
 		zipPostalCode = fakeData.getZipPostalCode();
-		country = fakeData.getCountry();
+		country = "Israel";
 		homeTelephone = fakeData.getNumber();
 		mobile = fakeData.getNumber();
 		workTelephone = fakeData.getNumber();
@@ -127,7 +130,7 @@ public class Level_19_Fake_Data extends BaseTest {
 		jobTitle = "Automation Tester";
 		empStatus = "Freelance";
 		jobCategory = "Professionals";
-		jobSubUnit = "Quality Assurance";
+		jobSubUnit = "  Quality Assurance";
 		jobLocation = "New York Sales Office";
 
 		// Salary
@@ -263,7 +266,7 @@ public class Level_19_Fake_Data extends BaseTest {
 	}
 
 	@Test
-	public void Employee_03_Perosnal_Details(Method method) {
+	public void Employee_03_Personal_Details(Method method) {
 		ExtentTestManager.startTest(method.getName(), "PERSONAL DETAILS");
 
 		ExtentTestManager.getTest().log(Status.INFO,
@@ -272,21 +275,21 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 02: Verify all fields at 'Personal Details' forms are Disabled");
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtEmpFirstName"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtEmpLastName"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtEmployeeId"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtLicenNo"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtLicExpDate"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtNICNo"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtSINNo"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_optGender_1"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_optGender_2"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_cmbMarital"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_cmbNation"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_DOB"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtEmpNickName"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_chkSmokeFlag"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtMilitarySer"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtEmpFirstName"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtEmpLastName"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtEmployeeId"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtLicenNo"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtLicExpDate"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtNICNo"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtSINNo"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_optGender_1"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_optGender_2"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_cmbMarital"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_cmbNation"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_DOB"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtEmpNickName"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_chkSmokeFlag"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtMilitarySer"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 03: Click on 'Edit' Button at 'Personal Details' ");
@@ -294,23 +297,23 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 04: Verify 'Employee ID' textbox is disabled"); // 1
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtEmployeeId"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtEmployeeId"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 05: Verify 'Driver's License Number textbox is disabled"); // 2
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtLicenNo"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtLicenNo"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 06: Verify 'SSN Number' textbox is disabled"); // 3
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtNICNo"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtNICNo"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 07: Verify 'SIN Number' textbox is disabled"); // 4
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_txtSINNo"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_txtSINNo"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 08: Verify 'Date of Birth' textbox is disabled"); // 5
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "personal_DOB"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "personal_DOB"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 09: Enter new value in 'First Name' textbox");
@@ -354,11 +357,14 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 19: Verify 'Marital Status' dropdown is successfully updated");
-		verifyEquals(myInfoPage.getSelectedValueInDropdownByID(driver, "personal_cmbMarital"), editEmpMaritalStatus);
+		verifyEquals(myInfoPage.getSelectedValueInDropdownByAttribute(driver, "personal_cmbMarital"),
+				editEmpMaritalStatus);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 20: Verify 'Nationality' dropdown is successfully updated");
-		verifyEquals(myInfoPage.getSelectedValueInDropdownByID(driver, "personal_cmbNation"), editEmpNationality);
+		verifyEquals(
+				myInfoPage.getDisabledSelectedItemInDefaultDropdown(driver, "personal_cmbNation", editEmpNationality),
+				editEmpNationality);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 21: Verify 'Employee ID' textbox value is correct");
@@ -370,25 +376,41 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 23: Print out all values in 'Blood Type' dropdown list");
-		myInfoPage.getAllValuesInDropdownList(driver);
+		myInfoPage.getAllValuesInDropdownListByName(driver, "custom1");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Personal Details_03 - Step 24: Click on 'Add' button at 'Attachments' field");
+				"Personal Details_03 - Step 24: Select new value in 'Blood Type' dropdown");
+		myInfoPage.selectItemInDropdownByName(driver, "custom1", bloodType);
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Personal Details_03 - Step 25: Click on 'Save' button at 'Custom Fields' field");
+		myInfoPage.clickToButtonByID(driver, "btnEditCustom");
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Personal Details_03 - Step 26: Verify Success Message is Displayed");
+		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Updated"));
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Personal Details_03 - Step 27: Verify new 'Blood Type' is successfully updated");
+		verifyEquals(myInfoPage.getDisabledTextInBloodTypeDropdownByName(driver, "custom1", bloodType), bloodType);
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Personal Details_03 - Step 28: Click on 'Add' button at 'Attachments' field");
 		myInfoPage.clickToButtonByID(driver, "btnAddAttachment");
 
-		ExtentTestManager.getTest().log(Status.INFO, "Personal Details_03 - Step 25: Upload Attachment");
+		ExtentTestManager.getTest().log(Status.INFO, "Personal Details_03 - Step 29: Upload Attachment");
 		myInfoPage.uploadImage(driver, attachmentFilePath);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Personal Details_03 - Step 26: Click on 'Upload' button");
+		ExtentTestManager.getTest().log(Status.INFO, "Personal Details_03 - Step 30: Click on 'Upload' button");
 		myInfoPage.clickToButtonByID(driver, "btnSaveAttachment");
 		myInfoPage.isJQueryAjaxLoadedSuccess(driver);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Personal Details_03 - Step 27: Verify Success Message is Displayed");
+				"Personal Details_03 - Step 31: Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Personal Details_03 - Step 28: Verify new attachment is uploaded");
+				"Personal Details_03 - Step 32: Verify new attachment is uploaded");
 		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "tblAttachments", "File Name", "1"),
 				"airbus320.jpg");
 
@@ -404,17 +426,17 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Contact_Details_04 - Step 02: Verify all fields at 'Contact Details' forms are Disabled");
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_street1"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_street2"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_city"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_province"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_emp_zipcode"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_country"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_emp_hm_telephone"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_emp_mobile"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_emp_work_telephone"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_emp_work_email"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "contact_emp_oth_email"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_street1"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_street2"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_city"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_province"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_emp_zipcode"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_country"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_emp_hm_telephone"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_emp_mobile"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_emp_work_telephone"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_emp_work_email"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "contact_emp_oth_email"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Contact_Details_04 - Step 03: Click on 'Edit' Button at 'Contact Details' ");
@@ -493,7 +515,7 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Contact_Details_04 - Step 22: Verify 'Country' dropdown is successfully updated");
-		verifyEquals(myInfoPage.getSelectedValueInDropdownByID(driver, "contact_country"), country);
+		verifyEquals(myInfoPage.getDisabledSelectedItemInDefaultDropdown(driver, "contact_country", country), country);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Contact_Details_04 - Step 23: Verify 'Home Telephone' textbox is successfully updated");
@@ -531,11 +553,11 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Emergency_Contacts_05 - Step 03: Verify all fields at 'Add Emergency Contact' form are Enabled");
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "emgcontacts_name"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "emgcontacts_relationship"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "emgcontacts_homePhone"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "emgcontacts_mobilePhone"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "emgcontacts_workPhone"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "emgcontacts_name"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "emgcontacts_relationship"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "emgcontacts_homePhone"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "emgcontacts_mobilePhone"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "emgcontacts_workPhone"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Emergency_Contacts_05 - Step 04: Enter new value in 'Name' textbox");
@@ -612,9 +634,9 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Assigned_Dependents_06 - Step 03: Verify all fields at 'Add Dependent' are Enabled");
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "dependent_name"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "dependent_relationshipType"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "dependent_dateOfBirth"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "dependent_name"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "dependent_relationshipType"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "dependent_dateOfBirth"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Assigned_Dependents_06 - Step 04: Enter new value in 'Name' textbox");
@@ -678,13 +700,13 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Assigned_Immigration_07 - Step 04: Veriy all fields at 'Add Immigration' form are Enabled");
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "immigration_number"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "immigration_passport_issue_date"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "immigration_passport_expire_date"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "immigration_i9_status"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "immigration_country"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "immigration_i9_review_date"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "immigration_comments"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "immigration_number"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "immigration_passport_issue_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "immigration_passport_expire_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "immigration_i9_status"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "immigration_country"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "immigration_i9_review_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "immigration_comments"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Assigned_Immigration_07 - Step 05: Enter new value in 'Number' textbox");
@@ -718,14 +740,14 @@ public class Level_19_Fake_Data extends BaseTest {
 		myInfoPage.openTabAtSideBarByName("Job");
 
 		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 02: Verify some fields at 'Job' form are Disabled");
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_job_title"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_emp_status"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_eeo_category"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_joined_date"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_sub_unit"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_location"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_contract_start_date"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "job_contract_end_date"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_job_title"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_emp_status"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_eeo_category"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_joined_date"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_sub_unit"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_location"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_contract_start_date"));
+		verifyFalse(myInfoPage.isFieldEnabledByID(driver, "job_contract_end_date"));
 
 		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 03: Login with 'Admin' Role");
 		loginPage = employeeListPage.logoutToSystem(driver);
@@ -745,8 +767,8 @@ public class Level_19_Fake_Data extends BaseTest {
 		verifyTrue(employeeListPage.isJQueryAjaxLoadedSuccess(driver));
 
 		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 07: Click on Employee's name");
-		employeeListPage.clickOnElementAtRowByColumnAndIndex(driver, "resultTable", "First (& Middle) Name", "1");
-		employeeListPage.clickOnElementAtRowByColumnAndIndex(driver, "resultTable", "Last Name", "1");
+		employeeListPage.clickOnElementByTextInTableByID(driver, "resultTable", editEmpFirstName);
+		employeeListPage.isJQueryAjaxLoadedSuccess(driver);
 
 		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 08: Open 'Job' Tab at Side Bar");
 		employeeListPage.openTabAtSideBarByName("Job");
@@ -776,8 +798,8 @@ public class Level_19_Fake_Data extends BaseTest {
 		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 15: Select new value to 'Job Category' dropdown");
 		employeeListPage.selectItemInDropdownByID(driver, "job_eeo_category", jobCategory);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 16: Pick new value from 'Joined Date' datepicker");
-		employeeListPage.enterADateToTextboxByID(driver, "job_joined_date", joinedDate);
+//		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 16: Pick new value from 'Joined Date' datepicker");
+//		employeeListPage.enterADateToTextboxByID(driver, "job_joined_date", joinedDate);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 17: Print out all values in 'Sub Unit' dropdown list");
@@ -811,11 +833,12 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 26: Verify 'Job Title' textbox is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_job_title"), jobTitle);
+		verifyEquals(employeeListPage.getDisabledSelectedItemInDefaultDropdown(driver, "job_job_title", jobTitle),
+				jobTitle);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 27: Verify 'Employment Status' textbox is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_emp_status"), empStatus);
+		verifyEquals(employeeListPage.getDisabledSelectedItemInDefaultDropdown(driver, "job_emp_status", empStatus), empStatus);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 28: Verify 'Job Category' textbox is successfully updated");
@@ -857,12 +880,12 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Salary_09 - Step 03: Verify all fields at 'Add Salary Component' are Enabled");
-		verifyTrue(employeeListPage.isFieldEnabledByName(driver, "salary_sal_grd_code"));
-		verifyTrue(employeeListPage.isFieldEnabledByName(driver, "salary_salary_component"));
-		verifyTrue(employeeListPage.isFieldEnabledByName(driver, "salary_payperiod_code"));
-		verifyTrue(employeeListPage.isFieldEnabledByName(driver, "salary_currency_id"));
-		verifyTrue(employeeListPage.isFieldEnabledByName(driver, "salary_basic_salary"));
-		verifyTrue(employeeListPage.isFieldEnabledByName(driver, "salary_comments"));
+		verifyTrue(employeeListPage.isFieldEnabledByID(driver, "salary_sal_grd_code"));
+		verifyTrue(employeeListPage.isFieldEnabledByID(driver, "salary_salary_component"));
+		verifyTrue(employeeListPage.isFieldEnabledByID(driver, "salary_payperiod_code"));
+		verifyTrue(employeeListPage.isFieldEnabledByID(driver, "salary_currency_id"));
+		verifyTrue(employeeListPage.isFieldEnabledByID(driver, "salary_basic_salary"));
+		verifyTrue(employeeListPage.isFieldEnabledByID(driver, "salary_comments"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Salary_09 - Step 04: Print out all values in 'Pay Grade' dropdown list");
@@ -899,10 +922,10 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Salary_09 - Step 13: Verify some fields at 'Add Direct Deposit Details' are Enabled");
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "directdeposit_account"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "directdeposit_account_type"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "directdeposit_routing_num"));
-		verifyFalse(myInfoPage.isFieldEnabledByName(driver, "directdeposit_amount"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "directdeposit_account"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "directdeposit_account_type"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "directdeposit_routing_num"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "directdeposit_amount"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Salary_09 - Step 14: Enter new value in 'Account Numbert' textbox");
@@ -961,14 +984,14 @@ public class Level_19_Fake_Data extends BaseTest {
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 02: Verify all fields at 'Tax Exemptions' form are Disabled");
 		// Federal Income Tax
-		verifyFalse(employeeListPage.isFieldEnabledByName(driver, "tax_federalStatus"));
-		verifyFalse(employeeListPage.isFieldEnabledByName(driver, "tax_federalExemptions"));
+		verifyFalse(employeeListPage.isFieldEnabledByID(driver, "tax_federalStatus"));
+		verifyFalse(employeeListPage.isFieldEnabledByID(driver, "tax_federalExemptions"));
 		// State Income Tax
-		verifyFalse(employeeListPage.isFieldEnabledByName(driver, "tax_state"));
-		verifyFalse(employeeListPage.isFieldEnabledByName(driver, "tax_stateStatus"));
-		verifyFalse(employeeListPage.isFieldEnabledByName(driver, "tax_stateExemptions"));
-		verifyFalse(employeeListPage.isFieldEnabledByName(driver, "tax_unempState"));
-		verifyFalse(employeeListPage.isFieldEnabledByName(driver, "tax_workState"));
+		verifyFalse(employeeListPage.isFieldEnabledByID(driver, "tax_state"));
+		verifyFalse(employeeListPage.isFieldEnabledByID(driver, "tax_stateStatus"));
+		verifyFalse(employeeListPage.isFieldEnabledByID(driver, "tax_stateExemptions"));
+		verifyFalse(employeeListPage.isFieldEnabledByID(driver, "tax_unempState"));
+		verifyFalse(employeeListPage.isFieldEnabledByID(driver, "tax_workState"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 03: Click on 'Edit' button at 'Tax Exemptions' ");
@@ -1023,35 +1046,41 @@ public class Level_19_Fake_Data extends BaseTest {
 		employeeListPage.selectItemInDropdownByID(driver, "tax_workState", workState);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 16: Verify Success Message is Displayed");
+				"Tax_Exemptions_10 - Step 16: Click on 'Save' button at 'Tax Exemptions' form");
+		employeeListPage.clickToButtonByID(driver, "btnSave");
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Tax_Exemptions_10 - Step 17: Verify Success Message is Displayed");
 		verifyTrue(employeeListPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 17: Verify 'Status' textbox at 'Tax Exemptions'  is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_federalStatus"), federalStatus);
+				"Tax_Exemptions_10 - Step 18: Verify 'Status' textbox at 'Tax Exemptions'  is successfully updated");
+		verifyEquals(
+				employeeListPage.getDisabledSelectedItemInDefaultDropdown(driver, "tax_federalStatus", federalStatus),
+				federalStatus);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 18: Verify 'Exemptions' textbox at 'Tax Exemptions'  is successfully updated");
+				"Tax_Exemptions_10 - Step 19: Verify 'Exemptions' textbox at 'Tax Exemptions'  is successfully updated");
 		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_federalExemptions"), federalExemptions);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 19: Verify 'State' textbox at 'State Income Tax'  is successfully updated");
+				"Tax_Exemptions_10 - Step 20: Verify 'State' textbox at 'State Income Tax'  is successfully updated");
 		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_state"), taxState);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 20: Verify 'Status' textbox at 'State Income Tax'  is successfully updated");
+				"Tax_Exemptions_10 - Step 21: Verify 'Status' textbox at 'State Income Tax'  is successfully updated");
 		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_stateStatus"), stateStatus);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 21: Verify 'Exemptions' textbox at 'State Income Tax'  is successfully updated");
+				"Tax_Exemptions_10 - Step 22: Verify 'Exemptions' textbox at 'State Income Tax'  is successfully updated");
 		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_stateExemptions"), tateExemptions);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 22: Verify 'Unemployment State' textbox at 'State Income Tax'  is successfully updated");
+				"Tax_Exemptions_10 - Step 23: Verify 'Unemployment State' textbox at 'State Income Tax'  is successfully updated");
 		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_unempState"), unempState);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Tax_Exemptions_10 - Step 23: Verify 'Work State' textbox at 'State Income Tax'  is successfully updated");
+				"Tax_Exemptions_10 - Step 24: Verify 'Work State' textbox at 'State Income Tax'  is successfully updated");
 		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_workState"), workState);
 
 	}
@@ -1063,11 +1092,12 @@ public class Level_19_Fake_Data extends BaseTest {
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Qualifications_11 - Step 00: Login back again with Employee Role");
 		loginPage = employeeListPage.logoutToSystem(driver);
-		loginPage.setAllCookies(driver, Common_01_Register_Then_Login.loginPageCookie);
-		loginPage.sleepInSecond(5);
-		loginPage.refreshCurrentPage(driver);
+		dashboardPage = loginPage.loginToSystem(driver, employeeUserName, employeePassword);
+//		loginPage.setAllCookies(driver, Common_01_Register_Then_Login.loginPageCookie);
+//		loginPage.sleepInSecond(5);
+//		loginPage.refreshCurrentPage(driver);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 00: Open Personal Detail Page");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 00: Open 'Personal Detail' Page");
 		dashboardPage.openMenuPage(driver, "My Info");
 		myInfoPage = PageGenerator.getMyInfoPage(driver);
 
@@ -1082,11 +1112,11 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Qualifications_11 - Step 03: Verify all fields at 'Add Work Experience' form are Enabled");
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "experience_employer"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "experience_jobtitle"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "experience_from_date"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "experience_to_date"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "experience_comments"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_employer"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_jobtitle"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_from_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_to_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_comments"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Qualifications_11 - Step 04 : Enter new value in 'Company' textbox at 'Add Work Experience' form");
@@ -1134,13 +1164,13 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Qualifications_11 - Step 17: Verify all fields at 'Education' form are Enabled");
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "education_code"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "education_institute"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "education_major"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "education_year"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "education_gpa"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "education_start_date"));
-		verifyTrue(myInfoPage.isFieldEnabledByName(driver, "education_end_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_code"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_institute"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_major"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_year"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_gpa"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_start_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_end_date"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Qualifications_11 - Step 18: Print out all values in 'Level' dropdown list at 'Add Education' ");
@@ -1197,12 +1227,12 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Memberships_12 - Step 03: Verify all fields at 'Add Membership' are Enabled");
-		myInfoPage.isFieldEnabledByName(driver, "membership_membership");
-		myInfoPage.isFieldEnabledByName(driver, "membership_subscriptionPaidBy");
-		myInfoPage.isFieldEnabledByName(driver, "membership_subscriptionAmount");
-		myInfoPage.isFieldEnabledByName(driver, "membership_currency");
-		myInfoPage.isFieldEnabledByName(driver, "membership_subscriptionCommenceDate");
-		myInfoPage.isFieldEnabledByName(driver, "membership_subscriptionRenewalDate");
+		myInfoPage.isFieldEnabledByID(driver, "membership_membership");
+		myInfoPage.isFieldEnabledByID(driver, "membership_subscriptionPaidBy");
+		myInfoPage.isFieldEnabledByID(driver, "membership_subscriptionAmount");
+		myInfoPage.isFieldEnabledByID(driver, "membership_currency");
+		myInfoPage.isFieldEnabledByID(driver, "membership_subscriptionCommenceDate");
+		myInfoPage.isFieldEnabledByID(driver, "membership_subscriptionRenewalDate");
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Memberships_12 - Step 04: Print out all values in 'Membership' dropdown list");
@@ -1241,7 +1271,7 @@ public class Level_19_Fake_Data extends BaseTest {
 
 	}
 
-	@Test
+	// @Test
 	public void Employee_13_Search_Employee(Method method) {
 		ExtentTestManager.startTest(method.getName(), "SEARCH");
 

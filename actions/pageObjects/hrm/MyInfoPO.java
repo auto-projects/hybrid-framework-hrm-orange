@@ -22,7 +22,7 @@ public class MyInfoPO extends BasePage {
 		waitForElementVisible(driver, MyInfoPageUI.AVATAR_IMAGE);
 		int imageWidth = Integer.parseInt(getElementAttribute(driver, MyInfoPageUI.AVATAR_IMAGE, "width"));
 		int imageHeight = Integer.parseInt(getElementAttribute(driver, MyInfoPageUI.AVATAR_IMAGE, "height"));
-		return (imageWidth != 200) || (imageHeight != 200);
+		return (imageWidth == 200) || (imageHeight == 200);
 	}
 
 	public void openTabAtSideBarByName(String tabName) {
