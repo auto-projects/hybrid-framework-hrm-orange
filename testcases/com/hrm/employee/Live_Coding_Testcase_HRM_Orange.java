@@ -10,7 +10,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
-import com.hrm.common.Common_01_Register_Then_Login;
 
 import commons.BaseTest;
 import commons.GlobalConstants;
@@ -23,7 +22,7 @@ import pageObjects.hrm.PageGenerator;
 import reportConfig.ExtentTestManager;
 import utilities.DataUtil;
 
-public class Level_19_Fake_Data extends BaseTest {
+public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 	String adminUserName, adminPassword, employeeFirstName, employeeLastName, employeeUserName, employeePassword;
 
 	// Add Employee & Edit 'Personal Details'
@@ -44,7 +43,7 @@ public class Level_19_Fake_Data extends BaseTest {
 	Date dependentDOB;
 
 	// Immigration
-	String immigNumber;
+	String immigNumber, immigStatus, immigCountry;
 
 	// Job
 	String jobTitle, empStatus, jobCategory, jobSubUnit, jobLocation;
@@ -58,7 +57,7 @@ public class Level_19_Fake_Data extends BaseTest {
 	String federalStatus, federalExemptions, taxState, stateStatus, tateExemptions, unempState, workState;
 
 	// Qualifications
-	String companyName, eduCode, eduInstitue, eduMajor, eduYear, eduGPA;
+	String companyName, eduCode, eduInstitue, eduMajor, eduYear, eduGPA, skillCode, yearsOfExp, languageCode, fluency, languageCompetency, licenseCode, licenseNumber;
 
 	// Memeberships
 	String membership, subscriptionPaidBy, subscriptionAmount, currency;
@@ -112,6 +111,8 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		// Immigration
 		immigNumber = fakeData.getNumber();
+		immigStatus = "Yes";
+		immigCountry = "Japan";
 
 		// Edit 'Contact Details'
 		addressStreet1 = fakeData.getStreetAddress();
@@ -152,17 +153,24 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		// Qualifications
 		companyName = fakeData.getCompanyName();
-		eduCode = "";
-		eduInstitue = "";
-		eduMajor = "";
+		eduCode = "getSelectedItemInDropdownByID";
+		eduInstitue = "Aviation Academy";
+		eduMajor = "Aviation";
 		eduYear = "1991";
-		eduGPA = "";
+		eduGPA = "9.0";
+		skillCode = "Java";
+		yearsOfExp = "3";
+		languageCode = "English";
+		fluency = "Writing";
+		languageCompetency = "Good";
+		licenseCode = "PMI Agile Certified Practitioner (PMI-ACP)";
+		licenseNumber = fakeData.getNumber();
 
 		// Memeberships
-		membership = "";
-		subscriptionPaidBy = "";
-		subscriptionAmount = "";
-		currency = "";
+		membership = "British Computer Society (BCS)";
+		subscriptionPaidBy = "Company";
+		currency = "Vietnamese Dong";
+		subscriptionAmount = fakeData.getNumber();
 
 		log.info("Pre-Condition - Step 02: Login with Admin Role");
 		dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
@@ -203,7 +211,7 @@ public class Level_19_Fake_Data extends BaseTest {
 		addEmployeePage.enterToTextboxByID(driver, "re_password", employeePassword);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Add_New_01 - Step 10: Select ' " + statusValue + " ' value in 'Status' dropdown");
+				"Add_New_01 - Step 10: Select '" + statusValue + "' value in 'Status' dropdown");
 		addEmployeePage.selectItemInDropdownByID(driver, "status", statusValue);
 
 		ExtentTestManager.getTest().log(Status.INFO, "Add_New_01 - Step 11: Click on 'Save' button");
@@ -362,9 +370,7 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 20: Verify 'Nationality' dropdown is successfully updated");
-		verifyEquals(
-				myInfoPage.getDisabledSelectedItemInDefaultDropdown(driver, "personal_cmbNation", editEmpNationality),
-				editEmpNationality);
+		verifyEquals(myInfoPage.getSelectedItemInDropdownByID(driver, "personal_cmbNation"), editEmpNationality);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Personal Details_03 - Step 21: Verify 'Employee ID' textbox value is correct");
@@ -515,7 +521,7 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Contact_Details_04 - Step 22: Verify 'Country' dropdown is successfully updated");
-		verifyEquals(myInfoPage.getDisabledSelectedItemInDefaultDropdown(driver, "contact_country", country), country);
+		verifyEquals(myInfoPage.getSelectedItemInDropdownByID(driver, "contact_country"), country);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Contact_Details_04 - Step 23: Verify 'Home Telephone' textbox is successfully updated");
@@ -642,8 +648,8 @@ public class Level_19_Fake_Data extends BaseTest {
 				"Assigned_Dependents_06 - Step 04: Enter new value in 'Name' textbox");
 		myInfoPage.enterToTextboxByID(driver, "dependent_name", dependentName);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Assigned_Dependents_06 - Step 05-a: Select ' " + dependentRela
-				+ " ' value in 'Relationship' dropdown");
+		ExtentTestManager.getTest().log(Status.INFO, "Assigned_Dependents_06 - Step 05-a: Select '" + dependentRela
+				+ "' value in 'Relationship' dropdown");
 		myInfoPage.selectItemInDropdownByID(driver, "dependent_relationshipType", dependentRela);
 
 		ExtentTestManager.getTest().log(Status.INFO,
@@ -712,24 +718,40 @@ public class Level_19_Fake_Data extends BaseTest {
 				"Assigned_Immigration_07 - Step 05: Enter new value in 'Number' textbox");
 		myInfoPage.enterToTextboxByID(driver, "immigration_number", immigNumber);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Assigned_Immigration_07 - Step 06: Click on 'Save' button");
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Assigned_Immigration_07 - Step 06: Enter new value in 'Eligible Status' textbox");
+		myInfoPage.enterToTextboxByID(driver, "immigration_i9_status", immigStatus);
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Assigned_Immigration_07 - Step 07: Print out all values in 'Issued By' dropdown list at 'Add Immigration' form");
+		employeeListPage.getAllValuesInDropdownByID(driver, "immigration_country");
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Assigned_Immigration_07 - Step 08: Select new value to 'Issued By' dropdown at 'Add Immigration' form");
+		employeeListPage.selectItemInDropdownByID(driver, "immigration_country", immigCountry);
+
+		ExtentTestManager.getTest().log(Status.INFO, "Assigned_Immigration_07 - Step 09: Click on 'Save' button");
 		myInfoPage.clickToButtonByID(driver, "btnSave");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Assigned_Immigration_07_ Step 08: Verify Success Message is Displayed");
+				"Assigned_Immigration_07_ Step 10: Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Assigned_Immigration_07_ Step 09: Print out all values at all rows");
+				"Assigned_Immigration_07_ Step 11: Print out all values at all rows");
 		myInfoPage.getAllValuesOfEachRowInTable(driver);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Assigned_Immigration_07_ Step 10: Verify added 'Passport' is updated");
+				"Assigned_Immigration_07_ Step 12: Verify added 'Passport' is updated");
 		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "", "Document", "1"), "Passport");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Assigned_Immigration_07_ Step 11: Verify added 'Number' is updated");
+				"Assigned_Immigration_07_ Step 13: Verify added 'Number' is updated");
 		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "", "Number", "1"), immigNumber);
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Assigned_Immigration_07_ Step 14: Verify added 'Issued By' is updated");
+		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "", "Issued By", "1"), immigCountry);
 	}
 
 	@Test
@@ -833,28 +855,27 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 26: Verify 'Job Title' textbox is successfully updated");
-		verifyEquals(employeeListPage.getDisabledSelectedItemInDefaultDropdown(driver, "job_job_title", jobTitle),
-				jobTitle);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "job_job_title"), jobTitle);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 27: Verify 'Employment Status' textbox is successfully updated");
-		verifyEquals(employeeListPage.getDisabledSelectedItemInDefaultDropdown(driver, "job_emp_status", empStatus), empStatus);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "job_emp_status"), empStatus);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 28: Verify 'Job Category' textbox is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_eeo_category"), jobCategory);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "job_eeo_category"), jobCategory);
 
-		ExtentTestManager.getTest().log(Status.INFO,
-				"Job_08 - Step 29: Verify 'Joined Date' textbox is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_joined_date"), joinedDate);
+//		ExtentTestManager.getTest().log(Status.INFO,
+//				"Job_08 - Step 29: Verify 'Joined Date' textbox is successfully updated");
+//		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_joined_date"), joinedDate);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 30: Verify 'Sub Unit' textbox is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_sub_unit"), jobSubUnit);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "job_sub_unit"), jobSubUnit);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 31: Verify 'Location' textbox is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_location"), jobLocation);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "job_location"), jobLocation);
 
 //		ExtentTestManager.getTest().log(Status.INFO, "Job_08 - Step 32: Verify 'Start Date' textbox is successfully updated");
 //		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_contract_start_date"), startDate);
@@ -1055,9 +1076,7 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 18: Verify 'Status' textbox at 'Tax Exemptions'  is successfully updated");
-		verifyEquals(
-				employeeListPage.getDisabledSelectedItemInDefaultDropdown(driver, "tax_federalStatus", federalStatus),
-				federalStatus);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "tax_federalStatus"), federalStatus);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 19: Verify 'Exemptions' textbox at 'Tax Exemptions'  is successfully updated");
@@ -1065,23 +1084,23 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 20: Verify 'State' textbox at 'State Income Tax'  is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_state"), taxState);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "tax_state"), taxState);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 21: Verify 'Status' textbox at 'State Income Tax'  is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_stateStatus"), stateStatus);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "tax_stateStatus"), stateStatus);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 22: Verify 'Exemptions' textbox at 'State Income Tax'  is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_stateExemptions"), tateExemptions);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "tax_stateExemptions"), tateExemptions);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 23: Verify 'Unemployment State' textbox at 'State Income Tax'  is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_unempState"), unempState);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "tax_unempState"), unempState);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 24: Verify 'Work State' textbox at 'State Income Tax'  is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_workState"), workState);
+		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "tax_workState"), workState);
 
 	}
 
@@ -1210,8 +1229,106 @@ public class Level_19_Fake_Data extends BaseTest {
 		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 28: Print out all values at all rows");
 		myInfoPage.getAllValuesOfEachRowInTable(driver);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 29: Verify added 'Level' is updated");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 30: Click on 'Add' button at 'Skills' form");
+		myInfoPage.clickToButtonByID(driver, "addSkill");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 31: Verify all fields at 'Skills' form are Enabled");
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "skill_code"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "skill_years_of_exp"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "skill_comments"));
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 32: Print out all values in 'Skill' dropdown list at 'Add Skill' form");
+		myInfoPage.getAllValuesInDropdownByID(driver, "skill_code");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 33: Select new value 'Skill' dropdown list at 'Add Skill' form");
+		myInfoPage.selectItemInDropdownByID(driver, "skill_code", skillCode);
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 34: Enter new value in 'Years of Experience' textbox at 'Add Skill' form");
+		myInfoPage.enterToTextboxByID(driver, "skill_years_of_exp", yearsOfExp);
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 35: Click on 'Save' button at 'Add Skill' form");
+		myInfoPage.clickToButtonByID(driver, "btnSkillSave");
 
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 36: Verify Success Message is Displayed");
+		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 37: Click on 'Add' button at 'Languages' form");
+		myInfoPage.clickToButtonByID(driver, "addLanguage");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 38: Verify all fields at 'Languages' form are Enabled");
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_code"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_code"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_competency"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_comments"));
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 39: Print out all values in 'Language' dropdown list at 'Add Language' form");
+		myInfoPage.getAllValuesInDropdownByID(driver, "language_code");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 40: Select new value in 'Language' dropdown list at 'Add Language' form");
+		myInfoPage.selectItemInDropdownByID(driver, "language_code", languageCode);
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 41: Print out all values in 'Fluency' dropdown list at 'Add Language' form");
+		myInfoPage.getAllValuesInDropdownByID(driver, "language_lang_type");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 42: Select new value 'Fluency' dropdown list at 'Add Language' form");
+		myInfoPage.selectItemInDropdownByID(driver, "language_lang_type", fluency);
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 43: Print out all values in 'Competency' dropdown list at 'Add Language' form");
+		myInfoPage.getAllValuesInDropdownByID(driver, "language_competency");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 44: Select new value 'Competency' dropdown list at 'Add Language' form");
+		myInfoPage.selectItemInDropdownByID(driver, "language_competency", languageCompetency);
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 45: Click on 'Save' button at 'Add Language' form");
+		myInfoPage.clickToButtonByID(driver, "btnLanguageSave");
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 46: Verify Success Message is Displayed");
+		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 47: Click on 'Add' button at 'License' form");
+		myInfoPage.clickToButtonByID(driver, "addLicense");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 48: Verify all fields at 'License' form are Enabled");
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_code"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_license_no"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_date"));
+		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_renewal_date"));
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 49: Print out all values in 'License' dropdown list at 'Add License' form");
+		myInfoPage.getAllValuesInDropdownByID(driver, "license_code");
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 50: Select new value in 'Language' dropdown list at 'Add License' form");
+		myInfoPage.selectItemInDropdownByID(driver, "license_code", licenseCode);
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 51: Enter new value in 'License Number' textbox at 'Add License' form");
+		myInfoPage.enterToTextboxByID(driver, "license_license_no", licenseNumber);
+		
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 52: Click on 'Save' button at 'Add License' form");
+		myInfoPage.clickToButtonByID(driver, "btnLicenseSave");
+
+		ExtentTestManager.getTest().log(Status.INFO,
+				"Qualifications_11 - Step 53: Verify Success Message is Displayed");
+		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 	}
 
 	@Test
@@ -1268,10 +1385,10 @@ public class Level_19_Fake_Data extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO, "Memberships_12 - Step 12: Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
-
+		
 	}
 
-	// @Test
+	@Test
 	public void Employee_13_Search_Employee(Method method) {
 		ExtentTestManager.startTest(method.getName(), "SEARCH");
 

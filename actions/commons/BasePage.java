@@ -631,26 +631,8 @@ public class BasePage {
 	}
 
 	/**
-	 * [DROPDOWN] GET & VERIFY - Get Text Value (Text) in Dropdown ('Disabled
-	 * Dropdown') Dropdown -> Select item by Text -> Get Text of selected item ->
-	 * Verify
+	 * Select item in Dropdown By ID
 	 * 
-	 * @param driver
-	 * @param dropdownByID
-	 * @param disabledItem
-	 * @param dynamicValues
-	 * @return
-	 */
-	public String getDisabledSelectedItemInDefaultDropdown(WebDriver driver, String dropdownByID, String disabledText,
-			String... dynamicValues) {
-		waitForElementVisible(driver, BasePageUI.DROPDOWN_BY_ID, dropdownByID);
-		return getSelectedItemByTextInDefaultDropdown(driver, BasePageUI.DROPDOWN_BY_ID, disabledText, dropdownByID);
-	}
-
-	/**
-	 * Select Item In Dropdown By ID
-	 * 
-	 * @author Yuna
 	 * @param driver
 	 * @param dropdownID
 	 * @param valueItem
@@ -658,7 +640,18 @@ public class BasePage {
 	public void selectItemInDropdownByID(WebDriver driver, String dropdownID, String valueItem) {
 		waitForElementClickable(driver, BasePageUI.DROPDOWN_BY_ID, dropdownID);
 		selectItemInDefaultDropdown(driver, BasePageUI.DROPDOWN_BY_ID, valueItem, dropdownID);
+	}
 
+	/**
+	 * Get select item in Dropdown by ID
+	 * 
+	 * @param driver
+	 * @param dropdownID
+	 * @return
+	 */
+	public String getSelectedItemInDropdownByID(WebDriver driver, String dropdownID) {
+		waitForElementVisible(driver, BasePageUI.DROPDOWN_BY_ID, dropdownID);
+		return getSelectedItemDefaultDropdown(driver, BasePageUI.DROPDOWN_BY_ID, dropdownID);
 	}
 
 	/**
