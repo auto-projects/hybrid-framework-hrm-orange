@@ -694,6 +694,15 @@ public class BasePage {
 				String.valueOf(columnIndex));
 	}
 
+	public String getValueInTableOfQualicicationsAtColumnNameAndRowIndex(WebDriver driver, String tableID,
+			String headerName, String rowIndex) {
+		int columnIndex = getElementSize(driver, BasePageUI.TABLE_AT_QUALIFICATIONS_BY_ID, tableID, headerName) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_AT_QUALIFICATIONS_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID,
+				rowIndex, String.valueOf(columnIndex));
+		return getElementText(driver, BasePageUI.TABLE_AT_QUALIFICATIONS_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID,
+				rowIndex, String.valueOf(columnIndex));
+	}
+
 	public DashboardPO loginToSystem(WebDriver driver, String userName, String password) {
 		waitForElementVisible(driver, BasePageUI.USER_LOGIN_TEXTBOX);
 		sendkeyToElement(driver, BasePageUI.USER_LOGIN_TEXTBOX, userName);
