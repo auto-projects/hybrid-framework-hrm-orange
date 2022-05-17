@@ -51,14 +51,17 @@ public class BaseTest {
 		BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
 		if (browser == BROWSER.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
+
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH
+					+ File.separator + "browserConsoleLogs" + File.separator + "Firefox.log");
+
 			driver = new FirefoxDriver();
 			System.out.println("Driver init at Base Test = " + driver.toString());
 		} else if (browser == BROWSER.CHROME) {
 			WebDriverManager.chromedriver().setup();
-			
 //			ChromeOptions options = new ChromeOptions();
 //			options.addExtensions(new File(GlobalConstants.PROJECT_PATH + "\\browserExtensions\\UltraSuft"));
-//			
 			driver = new ChromeDriver();
 			System.out.println("Driver init at Base Test = " + driver.toString());
 		} else if (browser == BROWSER.EDGE_CHROMIUM) {
@@ -86,19 +89,10 @@ public class BaseTest {
 		BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
 		if (browser == BROWSER.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
-
-			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, GlobalConstants.PROJECT_PATH
-					+ File.separator + "browserConsoleLogs" + File.separator + "Firefox.log");
-
 			driver = new FirefoxDriver();
 			System.out.println("Driver init at Base Test = " + driver.toString());
 		} else if (browser == BROWSER.CHROME) {
 			WebDriverManager.chromedriver().setup();
-			
-//			ChromeOptions options = new ChromeOptions();
-//			options.addExtensions(new File(GlobalConstants.PROJECT_PATH + "\\browserExtensions\\UltraSuft"));
-//			
 			driver = new ChromeDriver();
 			System.out.println("Driver init at Base Test = " + driver.toString());
 		} else if (browser == BROWSER.EDGE_CHROMIUM) {
@@ -327,7 +321,7 @@ public class BaseTest {
 			LogEntries logs = driver.manage().logs().get("browser");
 			List<LogEntry> logList = logs.getAll();
 			for (LogEntry logging : logList) {
-				System.out.println("►►►►►►►►►►►►►►► " + logging.getLevel().toString() + " ►►►►►►►►►►►►►►► \n"
+				log.info("►►►►►►►►►►►►►►► " + logging.getLevel().toString() + " ►►►►►►►►►►►►►►► \n"
 						+ logging.getMessage());
 			}
 		}

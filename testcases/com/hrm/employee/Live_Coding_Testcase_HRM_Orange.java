@@ -174,6 +174,7 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 
 		log.info("Pre-Condition - Step 02: Login with Admin Role");
 		dashboardPage = loginPage.loginToSystem(driver, adminUserName, adminPassword);
+		showBrowserConsoleLogs(driver);
 	}
 
 	@Test
