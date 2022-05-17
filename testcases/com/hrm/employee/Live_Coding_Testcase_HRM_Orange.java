@@ -153,7 +153,7 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 
 		// Qualifications
 		companyName = fakeData.getCompanyName();
-		eduCode = "getSelectedItemInDropdownByID";
+		eduCode = "Master's Degree";
 		eduInstitue = "Aviation Academy";
 		eduMajor = "Aviation";
 		eduYear = "1991";
@@ -1093,7 +1093,7 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 22: Verify 'Exemptions' textbox at 'State Income Tax'  is successfully updated");
-		verifyEquals(employeeListPage.getSelectedItemInDropdownByID(driver, "tax_stateExemptions"), tateExemptions);
+		verifyEquals(employeeListPage.getTextboxValueByID(driver, "tax_stateExemptions"), tateExemptions);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Tax_Exemptions_10 - Step 23: Verify 'Unemployment State' textbox at 'State Income Tax'  is successfully updated");
