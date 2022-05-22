@@ -170,6 +170,25 @@ public class BasePage {
 		element.sendKeys(textValue);
 	}
 
+	public void sendkeyToDatePickerTextbox(WebDriver driver, String xpathLocator, String dateValue) {
+		JavascriptExecutor jsExecutor;
+		jsExecutor = (JavascriptExecutor) driver;
+		WebElement dateTextbox = getWebElement(driver, xpathLocator);
+		jsExecutor.executeScript("arguments[0].removeAttribute('disabled')", dateTextbox);
+		dateTextbox.clear();
+		dateTextbox.sendKeys(dateValue);
+	}
+
+	public void sendkeyToDatePickerTextbox(WebDriver driver, String xpathLocator, String dateValue,
+			String... dynamicValues) {
+		JavascriptExecutor jsExecutor;
+		jsExecutor = (JavascriptExecutor) driver;
+		WebElement dateTextbox = getWebElement(driver, getDynamicXpath(xpathLocator, dynamicValues));
+		jsExecutor.executeScript("arguments[0].removeAttribute('disabled')", dateTextbox);
+		dateTextbox.clear();
+		dateTextbox.sendKeys(dateValue);
+	}
+
 	protected void selectItemInDefaultDropdown(WebDriver driver, String xpathLocator, String itemText) {
 		Select select = new Select(getWebElement(driver, xpathLocator));
 		select.selectByVisibleText(itemText);
@@ -696,7 +715,8 @@ public class BasePage {
 
 	public String getValueInTableOfQualicicationsAtColumnNameAndRowIndex(WebDriver driver, String tableID,
 			String headerName, String rowIndex) {
-		int columnIndex = getElementSize(driver, BasePageUI.TABLE_HEADER_AT_QUALIFICATIONS_BY_ID, tableID, headerName) + 1;
+		int columnIndex = getElementSize(driver, BasePageUI.TABLE_HEADER_AT_QUALIFICATIONS_BY_ID, tableID, headerName)
+				+ 1;
 		waitForElementVisible(driver, BasePageUI.TABLE_AT_QUALIFICATIONS_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID,
 				rowIndex, String.valueOf(columnIndex));
 		return getElementText(driver, BasePageUI.TABLE_AT_QUALIFICATIONS_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID,
@@ -845,6 +865,11 @@ public class BasePage {
 	public void clickOnElementByTextInTableByID(WebDriver driver, String tableID, String elementByText) {
 		waitForElementClickable(driver, BasePageUI.ELEMENT_BY_TEXT_IN_TABLE_BY_ID, tableID, elementByText);
 		clickToElement(driver, BasePageUI.ELEMENT_BY_TEXT_IN_TABLE_BY_ID, tableID, elementByText);
+	}
+
+	public void sendKeysToDatePickerTextboxByID(WebDriver driver, String datepickerID, String dateValue) {
+		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, datepickerID);
+		sendkeyToDatePickerTextbox(driver, BasePageUI.TEXTBOX_BY_ID, dateValue, datepickerID);
 	}
 
 	public long longTimeout = GlobalConstants.LONG_TIMEOUT;

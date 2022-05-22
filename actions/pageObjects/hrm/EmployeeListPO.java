@@ -15,5 +15,9 @@ public class EmployeeListPO extends BasePage {
 		waitForElementClickable(driver, EmployeeListPageUI.TAB_LINK_AT_SIDEBAR, tabName);
 		clickToElement(driver, EmployeeListPageUI.TAB_LINK_AT_SIDEBAR, tabName);
 	}
+	public String getTextOfContractDetails() {
+		waitForElementVisible(driver, EmployeeListPageUI.CONTRACT_DETAILS);
+		return getElementText(driver, EmployeeListPageUI.CONTRACT_DETAILS);
+	}
 
 }
