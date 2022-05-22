@@ -19,8 +19,7 @@ public class BasePageUI {
 	public static final String ELEMENT_BY_TEXT_IN_TABLE_BY_ID = "//table[@id='%s']//a[text()='%s']";
 	
 	// Qualifications
-	public static final String TABLE_HEADER_BY_ID_OF_FORM = "//form[@id='%s']//table";
-	public static final String TABLE_AT_QUALIFICATIONS_BY_ID = "//p[@id='%s']/following-sibling::table";
+	public static final String TABLE_HEADER_AT_QUALIFICATIONS_BY_ID = "//p[@id='%s']/following-sibling::table//th[string()='%s']/preceding-sibling::th";
 	public static final String TABLE_AT_QUALIFICATIONS_BY_COLUMN_INDEX_AND_ROW_INDEX = "//p[@id='%s']/following-sibling::table/tbody/tr[%s]/td[%s]";
 	
 	
