@@ -930,7 +930,7 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 29: Verify 'Joined Date' textbox is successfully updated");
-		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_joined_date"), jobStartDate);
+		verifyEquals(employeeListPage.getTextboxValueByID(driver, "job_joined_date"), jobJoinedDate);
 
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Job_08 - Step 30: Verify 'Sub Unit' textbox is successfully updated");
