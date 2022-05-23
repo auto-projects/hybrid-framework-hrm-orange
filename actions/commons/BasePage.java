@@ -187,6 +187,7 @@ public class BasePage {
 		jsExecutor.executeScript("arguments[0].removeAttribute('disabled')", dateTextbox);
 		dateTextbox.clear();
 		dateTextbox.sendKeys(dateValue);
+		dateTextbox.sendKeys(Keys.TAB);
 	}
 
 	protected void selectItemInDefaultDropdown(WebDriver driver, String xpathLocator, String itemText) {
@@ -771,8 +772,8 @@ public class BasePage {
 		}
 		// In tất cả giá trị row ra
 		for (String value : allRowValues) {
-			System.out.println("►►►►►►►►►►►►►►►►►►►►►►►►►►►►►►►►");
 			System.out.println(value);
+			System.out.println("►►►►►►►►►►►►►►►►►►►►►►►►►►►►►►►►");
 		}
 		return allRowValues;
 

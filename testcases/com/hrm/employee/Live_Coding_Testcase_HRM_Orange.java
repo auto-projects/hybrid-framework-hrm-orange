@@ -1167,11 +1167,11 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 
 		// Work Experience
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 04: Click on 'Add' button at 'Work Experience' form");
+				"Qualifications_11 - Step 04: WORK EXPERIENCE - Click on 'Add' button at 'Work Experience' form");
 		myInfoPage.clickToButtonByID(driver, "addWorkExperience");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 05: Verify all fields at 'Add Work Experience' form are Enabled");
+				"Qualifications_11 - Step 05: WORK EXPERIENCE - Verify all fields at 'Add Work Experience' form are Enabled");
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_employer"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_jobtitle"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_from_date"));
@@ -1179,50 +1179,50 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "experience_comments"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 06: Enter new value in 'Company' textbox at 'Add Work Experience' form");
+				"Qualifications_11 - Step 06: WORK EXPERIENCE - Enter new value in 'Company' textbox at 'Add Work Experience' form");
 		myInfoPage.enterToTextboxByID(driver, "experience_employer", companyName);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 07: Enter new value in 'Job Title' textbox at 'Add Work Experience' form");
+				"Qualifications_11 - Step 07: WORK EXPERIENCE - Enter new value in 'Job Title' textbox at 'Add Work Experience' form");
 		myInfoPage.enterToTextboxByID(driver, "experience_jobtitle", jobTitle);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 08: Pick new value at 'From' ");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 08: WORK EXPERIENCE - Pick new value at 'From' ");
 		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "experience_from_date", expFromDate);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 09: Pick new value at 'To' ");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 09: WORK EXPERIENCE - Pick new value at 'To' ");
 		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "experience_to_date", expToDate);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 10 : Click on 'Save' button at 'Add Work Experience' form");
+				"Qualifications_11 - Step 10 : WORK EXPERIENCE - Click on 'Save' button at 'Add Work Experience' form");
 		myInfoPage.clickToButtonByID(driver, "btnWorkExpSave");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 11 : Verify Success Message is Displayed");
+				"Qualifications_11 - Step 11 : WORK EXPERIENCE - Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 12: Print out all values at all rows");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 12: WORK EXPERIENCE - Print out all values at all rows");
 		myInfoPage.getAllValuesOfEachRowInTable(driver);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 13: Verify added 'Company' is updated");
-		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "", "Company", "1"), companyName);
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 13: WORK EXPERIENCE - Verify added 'Company' is updated");
+		verifyEquals(myInfoPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionWorkExperience", "Company", "1"), companyName);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 14: Verify added 'Job Title' is updated");
-		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "", "Job Title", "1"), jobTitle);
+				"Qualifications_11 - Step 14: WORK EXPERIENCE - Verify added 'Job Title' is updated");
+		verifyEquals(myInfoPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionWorkExperience", "Job Title", "1"), jobTitle);
 		
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 15: Verify added 'From' is updated");
-		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "", "From", "1"), expFromDate);
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 15: WORK EXPERIENCE - Verify added 'From' is updated");
+		verifyEquals(myInfoPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionWorkExperience", "From", "1"), expFromDate);
 		
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 16: Verify added 'To' is updated");
-		verifyEquals(myInfoPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "", "To", "1"), expToDate);
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 16: WORK EXPERIENCE - Verify added 'To' is updated");
+		verifyEquals(myInfoPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionWorkExperience", "To", "1"), expToDate);
 
 		// Education
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 17: Click on 'Add' button at 'Education' form");
+				"Qualifications_11 - Step 17: EDUCATION - Click on 'Add' button at 'Education' form");
 		myInfoPage.clickToButtonByID(driver, "addEducation");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 18: Verify all fields at 'Education' form are Enabled");
+				"Qualifications_11 - Step 18: EDUCATION - Verify all fields at 'Education' form are Enabled");
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_code"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_institute"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_major"));
@@ -1232,92 +1232,88 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "education_end_date"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 19: Print out all values in 'Level' dropdown list at 'Add Education' ");
+				"Qualifications_11 - Step 19: EDUCATION - Print out all values in 'Level' dropdown list at 'Add Education' ");
 		myInfoPage.getAllValuesInDropdownByID(driver, "education_code");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 20: Select new value 'Level' dropdown list at 'Add Education' ");
+				"Qualifications_11 - Step 20: EDUCATION - Select new value 'Level' dropdown list at 'Add Education' ");
 		myInfoPage.selectItemInDropdownByID(driver, "education_code", eduCode);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 21: Enter new value in 'Institute' textbox at 'Add Education' form");
+				"Qualifications_11 - Step 21: EDUCATION - Enter new value in 'Institute' textbox at 'Add Education' form");
 		myInfoPage.enterToTextboxByID(driver, "education_institute", eduInstitue);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 22: Enter new value in 'Major/Specialization' textbox at 'Add Education' form");
+				"Qualifications_11 - Step 22: EDUCATION - Enter new value in 'Major/Specialization' textbox at 'Add Education' form");
 		myInfoPage.enterToTextboxByID(driver, "education_major", eduMajor);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 23: Enter new value in 'Year' textbox at 'Add Education' form");
+				"Qualifications_11 - Step 23: EDUCATION - Enter new value in 'Year' textbox at 'Add Education' form");
 		myInfoPage.enterToTextboxByID(driver, "education_year", eduYear);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 24: Enter new value in 'GPA/Score' textbox at 'Add Education' form");
+				"Qualifications_11 - Step 24: EDUCATION - Enter new value in 'GPA/Score' textbox at 'Add Education' form");
 		myInfoPage.enterToTextboxByID(driver, "education_gpa", eduGPA);
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 25: Pick new value from 'Start Date' datepicker at 'Add Education' form");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 25: EDUCATION - Pick new value from 'Start Date' datepicker at 'Add Education' form");
 		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "education_start_date", eduStartDate);
 		
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 26: Pick new value from 'End Date' datepicker at 'Add Education' form");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 26: EDUCATION - Pick new value from 'End Date' datepicker at 'Add Education' form");
 		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "education_end_date", eduEndDate);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 27: Click on 'Save' button at 'Add Education' form");
+				"Qualifications_11 - Step 27: EDUCATION - Click on 'Save' button at 'Add Education' form");
 		myInfoPage.clickToButtonByID(driver, "btnEducationSave");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 28: Verify Success Message is Displayed");
+				"Qualifications_11 - Step 28: EDUCATION - Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
-		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 29: Print out all values at all rows");
+		ExtentTestManager.getTest().log(Status.INFO, "Qualifications_11 - Step 29: EDUCATION - Print out all values at all rows");
 		myInfoPage.getAllValuesOfEachRowInTable(driver);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 30 : Verify 'Education' infomation displayed at 'Result Table' ");
+				"Qualifications_11 - Step 30 : EDUCATION - Verify 'Education' infomation displayed at 'Result Table' ");
 		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionEducation",
 				"Level", "1"), eduCode);
 		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionEducation",
 				"Year", "1"), eduYear);
 		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionEducation",
 				"GPA/Score", "1"), eduGPA);
-		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionEducation",
-				"education_start_date", "1"), eduStartDate);
-		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionEducation",
-				"education_end_date", "1"), eduEndDate);
-				
+					
 		// Skills
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 31: Click on 'Add' button at 'Skills' form");
+				"Qualifications_11 - Step 31: SKILLS - Click on 'Add' button at 'Skills' form");
 		myInfoPage.clickToButtonByID(driver, "addSkill");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 32: Verify all fields at 'Skills' form are Enabled");
+				"Qualifications_11 - Step 32: SKILLS - Verify all fields at 'Skills' form are Enabled");
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "skill_code"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "skill_years_of_exp"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "skill_comments"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 33: Print out all values in 'Skill' dropdown list at 'Add Skill' form");
+				"Qualifications_11 - Step 33: SKILLS - Print out all values in 'Skill' dropdown list at 'Add Skill' form");
 		myInfoPage.getAllValuesInDropdownByID(driver, "skill_code");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 34: Select new value 'Skill' dropdown list at 'Add Skill' form");
+				"Qualifications_11 - Step 34: SKILLS - Select new value 'Skill' dropdown list at 'Add Skill' form");
 		myInfoPage.selectItemInDropdownByID(driver, "skill_code", skillCode);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 35: Enter new value in 'Years of Experience' textbox at 'Add Skill' form");
+				"Qualifications_11 - Step 35: SKILLS - Enter new value in 'Years of Experience' textbox at 'Add Skill' form");
 		myInfoPage.enterToTextboxByID(driver, "skill_years_of_exp", yearsOfExp);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 36: Click on 'Save' button at 'Add Skill' form");
+				"Qualifications_11 - Step 36: SKILLS - Click on 'Save' button at 'Add Skill' form");
 		myInfoPage.clickToButtonByID(driver, "btnSkillSave");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 37: Verify Success Message is Displayed");
+				"Qualifications_11 - Step 37: SKILLS - Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 38 : Verify 'Skills' infomation displayed at 'Result Table' ");
+				"Qualifications_11 - Step 38 : SKILLS - Verify 'Skills' infomation displayed at 'Result Table' ");
 		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionSkill",
 				"Skill", "1"), skillCode);
 		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionEducation",
@@ -1325,50 +1321,50 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 		
 		// Languages
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 39: Click on 'Add' button at 'Languages' form");
+				"Qualifications_11 - Step 39: LANGUAGES - Click on 'Add' button at 'Languages' form");
 		myInfoPage.clickToButtonByID(driver, "addLanguage");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 40: Verify all fields at 'Languages' form are Enabled");
+				"Qualifications_11 - Step 40: LANGUAGES - Verify all fields at 'Languages' form are Enabled");
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_code"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_code"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_competency"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "language_comments"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 41: Print out all values in 'Language' dropdown list at 'Add Language' form");
+				"Qualifications_11 - Step 41: LANGUAGES - Print out all values in 'Language' dropdown list at 'Add Language' form");
 		myInfoPage.getAllValuesInDropdownByID(driver, "language_code");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 42: Select new value in 'Language' dropdown list at 'Add Language' form");
+				"Qualifications_11 - Step 42: LANGUAGES - Select new value in 'Language' dropdown list at 'Add Language' form");
 		myInfoPage.selectItemInDropdownByID(driver, "language_code", languageCode);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 43: Print out all values in 'Fluency' dropdown list at 'Add Language' form");
+				"Qualifications_11 - Step 43: LANGUAGES - Print out all values in 'Fluency' dropdown list at 'Add Language' form");
 		myInfoPage.getAllValuesInDropdownByID(driver, "language_lang_type");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 44: Select new value 'Fluency' dropdown list at 'Add Language' form");
+				"Qualifications_11 - Step 44: LANGUAGES - Select new value 'Fluency' dropdown list at 'Add Language' form");
 		myInfoPage.selectItemInDropdownByID(driver, "language_lang_type", fluency);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 45: Print out all values in 'Competency' dropdown list at 'Add Language' form");
+				"Qualifications_11 - Step 45: LANGUAGES - Print out all values in 'Competency' dropdown list at 'Add Language' form");
 		myInfoPage.getAllValuesInDropdownByID(driver, "language_competency");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 46: Select new value 'Competency' dropdown list at 'Add Language' form");
+				"Qualifications_11 - Step 46: LANGUAGES - Select new value 'Competency' dropdown list at 'Add Language' form");
 		myInfoPage.selectItemInDropdownByID(driver, "language_competency", languageCompetency);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 47: Click on 'Save' button at 'Add Language' form");
+				"Qualifications_11 - Step 47: LANGUAGES - Click on 'Save' button at 'Add Language' form");
 		myInfoPage.clickToButtonByID(driver, "btnLanguageSave");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 48: Verify Success Message is Displayed");
+				"Qualifications_11 - Step 48: LANGUAGES - Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 49 : Verify 'Languages' infomation displayed at 'Result Table' ");
+				"Qualifications_11 - Step 49 : LANGUAGES - Verify 'Languages' infomation displayed at 'Result Table' ");
 		verifyEquals(
 				employeeListPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "lang_data_table", "Language", "1"),
 				languageCode);
@@ -1381,46 +1377,46 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 
 		// License
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 50: Click on 'Add' button at 'License' form");
+				"Qualifications_11 - Step 50: LICENSE - Click on 'Add' button at 'License' form");
 		myInfoPage.clickToButtonByID(driver, "addLicense");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 51: Verify all fields at 'License' form are Enabled");
+				"Qualifications_11 - Step 51: LICENSE - Verify all fields at 'License' form are Enabled");
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_code"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_license_no"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_date"));
 		verifyTrue(myInfoPage.isFieldEnabledByID(driver, "license_renewal_date"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 52: Print out all values in 'License Type' dropdown list at 'Add License' form");
+				"Qualifications_11 - Step 52: LICENSE - Print out all values in 'License Type' dropdown list at 'Add License' form");
 		myInfoPage.getAllValuesInDropdownByID(driver, "license_code");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 53: Select new value in 'License Tyope' dropdown list at 'Add License' form");
+				"Qualifications_11 - Step 53: LICENSE - Select new value in 'License Tyope' dropdown list at 'Add License' form");
 		myInfoPage.selectItemInDropdownByID(driver, "license_code", licenseCode);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 54: Enter new value in 'License Number' textbox at 'Add License' form");
+				"Qualifications_11 - Step 54: LICENSE - Enter new value in 'License Number' textbox at 'Add License' form");
 		myInfoPage.enterToTextboxByID(driver, "license_license_no", licenseNumber);
 		
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 55: Enter new value in 'Issued Date' textbox at 'Add License' form");
+				"Qualifications_11 - Step 55: LICENSE - Enter new value in 'Issued Date' textbox at 'Add License' form");
 		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "license_date", licenseDate);
 		
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 56: Enter new value in 'Expiry Date' textbox at 'Add License' form");
+				"Qualifications_11 - Step 56: LICENSE - Enter new value in 'Expiry Date' textbox at 'Add License' form");
 		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "license_renewal_date", licenseExpiryDate);
 		
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 57: Click on 'Save' button at 'Add License' form");
+				"Qualifications_11 - Step 57: LICENSE - Click on 'Save' button at 'Add License' form");
 		myInfoPage.clickToButtonByID(driver, "btnLicenseSave");
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 58: Verify Success Message is Displayed");
+				"Qualifications_11 - Step 58: LICENSE - Verify Success Message is Displayed");
 		verifyTrue(myInfoPage.isSuccessMessageDisplayed(driver, "Successfully Saved"));
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Qualifications_11 - Step 59 : Verify 'License' infomation displayed at 'Result Table' ");
+				"Qualifications_11 - Step 59 : LICENSE - Verify 'License' infomation displayed at 'Result Table' ");
 		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionLicense",
 				"License Type", "1"), licenseCode);
 		verifyEquals(employeeListPage.getValueInTableOfQualicicationsAtColumnNameAndRowIndex(driver, "actionLicense",
@@ -1481,11 +1477,11 @@ public class Live_Coding_Testcase_HRM_Orange extends BaseTest {
 		
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Memberships_12 - Step 11: Select new  value in 'Subscription Commence Date' from DatePicker");
-		myInfoPage.selectItemInDropdownByID(driver, "membership_subscriptionCommenceDate", subComDate);
+		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "membership_subscriptionCommenceDate", subComDate);
 
 		ExtentTestManager.getTest().log(Status.INFO,
-				"Memberships_12 - Step 12: Select new  value in 'Subscription Commence Date' from DatePicker");
-		myInfoPage.selectItemInDropdownByID(driver, "membership_subscriptionRenewalDate", subReDate);
+				"Memberships_12 - Step 12: Select new  value in 'Subscription Renewal Date' from DatePicker");
+		myInfoPage.sendKeysToDatePickerTextboxByID(driver, "membership_subscriptionRenewalDate", subReDate);
 		
 		ExtentTestManager.getTest().log(Status.INFO,
 				"Memberships_12 - Step 13: Click on 'Save' button at 'Add Membership' form");
