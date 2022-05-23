@@ -714,7 +714,7 @@ public class BasePage {
 				String.valueOf(columnIndex));
 	}
 
-	public String getValueInTableOfQualicicationsAtColumnNameAndRowIndex(WebDriver driver, String tableID,
+	public String getValueInTableByHTMLAtColumnNameAndRowIndex(WebDriver driver, String tableID,
 			String headerName, String rowIndex) {
 		int columnIndex = getElementSize(driver, BasePageUI.TABLE_HEADER_AT_QUALIFICATIONS_BY_ID, tableID, headerName)
 				+ 1;
