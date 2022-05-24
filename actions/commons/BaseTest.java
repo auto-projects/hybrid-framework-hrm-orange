@@ -2,6 +2,7 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -41,10 +42,6 @@ public class BaseTest {
 
 	private enum BROWSER {
 		CHROME, FIREFOX, IE, SAFARI, EDGE_LEGACY, EDGE_CHROMIUM, H_CHROME, H_FIREFOX;
-	}
-
-	private enum ENVIRONMENT {
-		PRODUCTION, STAGING, DEV, TESTING;
 	}
 
 	protected WebDriver getBrowserDriver(String browserName) {
@@ -123,27 +120,10 @@ public class BaseTest {
 		} else {
 			throw new RuntimeException("PLEASE ENTER A CORRECT BROWSER NAME!!!");
 		}
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.get(appUrl);
-//		driver.get(getEnvironmentValue(appUrl));
 		driver.manage().window().maximize();
 		return driver;
-	}
-
-	private String getEnvironmentValue(String environmentName) {
-		String envUrl = null;
-		ENVIRONMENT environment = ENVIRONMENT.valueOf(environmentName.toUpperCase());
-		if (environment == ENVIRONMENT.PRODUCTION) {
-			envUrl = "https://";
-		} else if (environment == ENVIRONMENT.STAGING) {
-			envUrl = "https://";
-		} else if (environment == ENVIRONMENT.DEV) {
-			envUrl = "https://";
-		} else if (environment == ENVIRONMENT.TESTING) {
-			envUrl = "https://";
-		}
-		System.out.println(envUrl);
-		return envUrl;
 	}
 
 	public WebDriver getDriverInstance() {
